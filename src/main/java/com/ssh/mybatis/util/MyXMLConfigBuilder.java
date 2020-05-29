@@ -1,7 +1,7 @@
 package com.ssh.mybatis.util;
 
 
-import com.ssh.mybatis.annotation.Select;
+import com.ssh.mybatis.annotation.MySelect;
 import com.ssh.mybatis.cfg.MyConfiguration;
 import com.ssh.mybatis.cfg.MyMapper;
 import com.ssh.mybatis.io.MyResources;
@@ -174,12 +174,12 @@ public class MyXMLConfigBuilder {
         //3.遍历Method数组
         for(Method method : methods){
             //取出每一个方法，判断是否有select注解
-            boolean isAnnotated = method.isAnnotationPresent(Select.class);
+            boolean isAnnotated = method.isAnnotationPresent(MySelect.class);
             if(isAnnotated){
                 //创建Mapper对象
                 MyMapper mapper = new MyMapper();
                 //取出注解的value属性值
-                Select selectAnno = method.getAnnotation(Select.class);
+                MySelect selectAnno = method.getAnnotation(MySelect.class);
                 String queryString = selectAnno.value();
                 mapper.setQueryString(queryString);
                 //获取当前方法的返回值，还要求必须带有泛型信息
