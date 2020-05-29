@@ -1,0 +1,5 @@
+<mapper namespace="com.ssh.bussi.mapper.UserMapper">
+    <select id="selectList" resultType="com.ssh.bussi.pojo.User">
+          select * from user
+    </select>
+</mapper>
